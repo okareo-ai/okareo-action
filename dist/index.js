@@ -27,7 +27,7 @@ async function setup() {
     const binPath = path.join(pathToCLI, download.binPath);
     console.log(`Full Path ${ binPath }`);
     // Expose the tool by adding it to the PATH
-    core.addPath(binPath);
+    core.addPath(pathToCLI);
   } catch (e) {
     core.setFailed(e);
   }
