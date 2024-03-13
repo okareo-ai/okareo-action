@@ -29,6 +29,8 @@ jobs:
 
     - name: Capture okareo version installed
       run: |
+        ls .
+        which okareo-cli
         export OKAREO_VERSION=$( okareo-cli version )
         echo 'OKAREO_VERSION_INSTALLED<<EOF' >> $GITHUB_ENV
         okareo-cli version >> $GITHUB_ENV
