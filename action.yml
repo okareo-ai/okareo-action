@@ -1,16 +1,16 @@
 # action.yml
-name: 'Hello World'
-description: 'Greet someone and record the time'
+name: okareo-action
+description: Setup the Okareo CLI to continuously evaluate your model integrations
 inputs:
-  who-to-greet:  # id of input
-    description: 'Who to greet'
-    required: true
-    default: 'World'
-outputs:
-  time: # id of output
-    description: 'The time we greeted you'
+  version: 
+    description: The version of the Okareo CLI to use
+    required: false
+    default: 0.0.2
+#runs:
+#  using: 'docker'
+#  image: 'Dockerfile'
+#  args:
+#    - ${{ inputs.who-to-greet }}
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - ${{ inputs.who-to-greet }}
+  using: node12
+  main: dist/index.js
