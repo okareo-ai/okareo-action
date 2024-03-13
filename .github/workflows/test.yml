@@ -27,11 +27,13 @@ jobs:
       with:
         version: ${{ matrix.version }}
 
+    - name: Validate that the Okareo CLI is available
+      run: |
+        echo %PATH%
+
     - name: Capture okareo version installed
       run: |
-        which okareo-cli
-        okareo-cli version
-        ./okareo-cli help
+        ./okareo-cli version
         export OKAREO_VERSION=$( okareo-cli version )
         echo 'OKAREO_VERSION_INSTALLED<<EOF' >> $GITHUB_ENV
         okareo-cli version >> $GITHUB_ENV
