@@ -29,7 +29,7 @@ jobs:
 
     - name: Validate that the Okareo CLI is available
       run: |
-        echo %PATH%
+        echo $PATH
 
     - name: Capture okareo version installed
       run: |
