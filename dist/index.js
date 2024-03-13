@@ -22,7 +22,8 @@ async function setup() {
     // Extract the tarball/zipball onto host runner
     const extract = download.url.endsWith('.zip') ? tc.extractZip : tc.extractTar;
     const pathToCLI = await extract(pathToTarball);
-
+    console.log(`Extracted to ${ pathToCLI }`);
+    console.log(`Bin Path ${ download.binPath }`);
     // Expose the tool by adding it to the PATH
     core.addPath(path.join(pathToCLI, download.binPath));
   } catch (e) {
@@ -69,8 +70,8 @@ function getDownloadObject(version) {
   const platform = os.platform();
   const filename = `okareo-cli_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
   //const filename = `gh_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
-  const extension = platform === 'win32' ? 'zip' : 'tar.gz';
-  const binPath = platform === 'win32' ? 'bin' : path.join(filename, 'bin');
+  const extension = 'tar.gz'; //platform === 'win32' ? 'zip' : 'tar.gz';
+  const binPath = filename;// = platform === 'win32' ? 'bin' : path.join(filename, 'bin');
   const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v${ version }/${ filename }.${ extension }`
   //const url = `https://github.com/cli/cli/releases/download/v${ version }/${ filename }.${ extension }`;
   return {
