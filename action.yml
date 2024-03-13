@@ -3,9 +3,9 @@ name: okareo-action
 description: Setup the Okareo CLI to continuously evaluate your model integrations
 inputs:
   version: 
-    description: The version of the Okareo CLI to use
+    description: 'The version of the Okareo CLI to use'
     required: false
-    default: 0.0.2
+    default: '0.0.2'
 #runs:
 #  using: 'docker'
 #  image: 'Dockerfile'

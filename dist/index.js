@@ -13,7 +13,7 @@ const { getDownloadObject } = __webpack_require__(918);
 async function setup() {
   try {
     // Get version of tool to be installed
-    const file_pattern = core.getInput('file-pattern');
+    const version = core.getInput('version');
 
     // Download the specific version of the tool, e.g. as a tarball/zipball
     const download = getDownloadObject(version);
