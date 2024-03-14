@@ -3,7 +3,7 @@ name: Tests
 on:
   push:
     branches:
-    - main
+    - test_action
   pull_request:
 
 defaults:
