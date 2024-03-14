@@ -1,4 +1,4 @@
-@vercel/ncc
+@actions/core
 MIT
 Copyright 2018 ZEIT, Inc.
 
