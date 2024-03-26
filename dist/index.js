@@ -23,7 +23,7 @@ async function setup() {
     const pathToCLI = await extract(pathToTarball);
     console.log(`Extracted to ${ pathToCLI }`);
     console.log(`Bin Path ${ download.binPath }`);
-    const binPath = path.join(pathToCLI, download.binPath, "bin");
+    const binPath = path.join(pathToCLI, download.binPath);
     console.log(`Full Path ${ binPath }`);
     // Expose the tool by adding it to the PATH
     core.addPath(pathToCLI);
