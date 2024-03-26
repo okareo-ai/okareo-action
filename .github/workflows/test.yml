@@ -3,7 +3,7 @@ name: Tests
 on:
   push:
     branches:
-    - experiment
+    - main
   pull_request:
 
 defaults:
