@@ -5,7 +5,7 @@ inputs:
   version: 
     description: 'The version of the Okareo CLI to use'
     required: false
-    default: '0.0.7'
+    default: '0.0.8'
 #runs:
 #  using: 'docker'
 #  image: 'Dockerfile'
