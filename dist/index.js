@@ -22,12 +22,10 @@ async function setup() {
     const extract = download.url.endsWith('.zip') ? tc.extractZip : tc.extractTar;
     const pathToCLI = await extract(pathToTarball);
     core.debug(`Extracted to ${ pathToCLI }`);
-    core.debug(`Bin Path ${ download.binPath }`);
     const binPath = path.join(pathToCLI, download.binPath);
-    core.debug(`Full Path ${ binPath }`);
     // Expose the tool by adding it to the PATH
-    core.debug(`Adding ${ pathToCLI } to PATH`);
-    core.addPath(pathToCLI);
+    core.debug(`Adding ${ binPath } to PATH`);
+    core.addPath(binPath);
   } catch (e) {
     core.setFailed(e);
   }
@@ -74,20 +72,20 @@ function getDownloadObject(version) {
   const platform = os.platform();
   //core.debug(`platform: ${ platform }`);
   //core.debug(`os.arch(): ${ os.arch() }`);
-  const filename = 'okareo_0.0.8_linux_amd64';
-  const filename_gen = `okareo_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
+  //const filename = 'okareo_0.0.8_linux_amd64';
+  const filename = `okareo_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
   core.debug(`filename: ${ filename }`);
-  core.debug(`filename_gen: ${ filename_gen }`);
+  //core.debug(`filename_gen: ${ filename_gen }`);
   const extension = 'tar.gz'; //platform === 'win32' ? 'zip' : 'tar.gz';
   //const binPath = filename;
-  const binPath_gen = (platform === 'win32') ? 'bin' : path.join(filename, 'bin');
-  const binPath = 'bin';//(platform === 'win32') ? 'bin' : path.join(filename, 'bin');
-  core.debug(`binPath: ${ binPath }`);
-  core.debug(`binPath_gen: ${ binPath_gen }`);
-  const gen_url = `https://github.com/okareo-ai/okareo-cli/releases/download/v${ version }/${ filename }.${ extension }`
-  const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v0.0.8/okareo_0.0.8_linux_386.tar.gz`
+  //const binPath = 'bin';//(platform === 'win32') ? 'bin' : path.join(filename, 'bin');
+  const binPath = (platform === 'win32') ? 'bin' : path.join(filename, 'bin');
+  //core.debug(`binPath: ${ binPath }`);
+  //core.debug(`binPath_gen: ${ binPath_gen }`);
+  const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v${ version }/${ filename }.${ extension }`
+  //const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v0.0.8/okareo_0.0.8_linux_386.tar.gz`
   core.debug(`url: ${ url }`);
-  core.debug(`gen: ${ gen_url }`);
+  //core.debug(`gen: ${ gen_url }`);
   return {
     url,
     binPath
