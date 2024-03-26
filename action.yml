@@ -1,6 +1,6 @@
 # action.yml
-name: okareo-action
-description: Setup the Okareo CLI to continuously evaluate your model integrations
+name: 'Okareo Action'
+description: 'Setup the Okareo CLI to continuously evaluate your model integrations'
 inputs:
   version: 
     description: 'The version of the Okareo CLI to use'
@@ -12,5 +12,5 @@ inputs:
 #  args:
 #    - ${{ inputs.version }}
 runs:
-  using: node20
+  using: 'node20'
   main: dist/index.js
