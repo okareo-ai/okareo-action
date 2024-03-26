@@ -26,7 +26,9 @@ async function setup() {
     const binPath = path.join(pathToCLI, download.binPath, "bin");
     console.log(`Full Path ${ binPath }`);
     // Expose the tool by adding it to the PATH
+    core.addPath("BEFORE");
     core.addPath(pathToCLI);
+    core.addPath("AFTER");
   } catch (e) {
     core.setFailed(e);
   }
@@ -62,7 +64,8 @@ function mapArch(arch) {
 function mapOS(os) {
   const mappings = {
     darwin: 'macOS',
-    win32: 'windows'
+    win32: 'windows',
+    linux: 'linux',
   };
   return mappings[os] || os;
 }
