@@ -29,6 +29,7 @@ async function setup() {
     core.debug(`Adding ${ pathToCLI } to PATH`);
     core.addPath(pathToCLI);
   } catch (e) {
+    core.debug(e);
     core.setFailed(e);
   }
 }
