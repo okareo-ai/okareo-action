@@ -21,10 +21,10 @@ async function setup() {
     // Extract the tarball/zipball onto host runner
     const extract = download.url.endsWith('.zip') ? tc.extractZip : tc.extractTar;
     const pathToCLI = await extract(pathToTarball);
-    console.log(`Extracted to ${ pathToCLI }`);
-    console.log(`Bin Path ${ download.binPath }`);
+    core.debug(`Extracted to ${ pathToCLI }`);
+    core.debug(`Bin Path ${ download.binPath }`);
     const binPath = path.join(pathToCLI, download.binPath, "bin");
-    console.log(`Full Path ${ binPath }`);
+    core.debug(`Full Path ${ binPath }`);
     // Expose the tool by adding it to the PATH
     core.debug(`Adding ${ pathToCLI } to PATH`);
     core.addPath(pathToCLI);
@@ -47,6 +47,7 @@ if (require.main === require.cache[eval('__filename')]) {
 
 const os = __nccwpck_require__(2037);
 const path = __nccwpck_require__(1017);
+const core = __nccwpck_require__(5539);
 
 // arch in [arm, x32, x64...] (https://nodejs.org/api/os.html#os_os_arch)
 // return value in [amd64, 386, arm]
@@ -71,14 +72,13 @@ function mapOS(os) {
 
 function getDownloadObject(version) {
   const platform = os.platform();
-  //const filename = `https://github.com/okareo-ai/okareo-cli/releases/download/v0.0.8/okareo_0.0.8_linux_arm64.tar.gz`;
+  core.debug(`platform: ${ platform }`);
+  core.debug(`os.arch(): ${ os.arch() }`);
   const filename = `okareo_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
-  //const filename = `gh_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
   const extension = 'tar.gz'; //platform === 'win32' ? 'zip' : 'tar.gz';
   const binPath = filename;// = platform === 'win32' ? 'bin' : path.join(filename, 'bin');
-  //const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v0.0.8/okareo_0.0.8_linux_arm64.tar.gz`;
+  core.debug(`binPath: ${ binPath }`);
   const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v${ version }/${ filename }.${ extension }`
-  //const url = `https://github.com/cli/cli/releases/download/v${ version }/${ filename }.${ extension }`;
   return {
     url,
     binPath

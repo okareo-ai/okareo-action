@@ -23,11 +23,8 @@ jobs:
       with:
         version: '0.0.8'
 
-    - name: Validate that the Okareo CLI is available
-      run: |
-        echo $PATH
-
     - name: Capture okareo version installed
       run: |
+        echo $PATH
         which okareo
         okareo --version

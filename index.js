@@ -15,10 +15,10 @@ async function setup() {
     // Extract the tarball/zipball onto host runner
     const extract = download.url.endsWith('.zip') ? tc.extractZip : tc.extractTar;
     const pathToCLI = await extract(pathToTarball);
-    console.log(`Extracted to ${ pathToCLI }`);
-    console.log(`Bin Path ${ download.binPath }`);
+    core.debug(`Extracted to ${ pathToCLI }`);
+    core.debug(`Bin Path ${ download.binPath }`);
     const binPath = path.join(pathToCLI, download.binPath, "bin");
-    console.log(`Full Path ${ binPath }`);
+    core.debug(`Full Path ${ binPath }`);
     // Expose the tool by adding it to the PATH
     core.debug(`Adding ${ pathToCLI } to PATH`);
     core.addPath(pathToCLI);
