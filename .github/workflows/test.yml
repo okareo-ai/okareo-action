@@ -17,7 +17,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest]
-        version: ['0.0.4']
+        version: ['0.0.7']
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -33,9 +33,9 @@ jobs:
 
     - name: Capture okareo version installed
       run: |
-        export OKAREO_VERSION=$( okareo-cli version )
+        export OKAREO_VERSION=$( okareo-cli -v )
         echo 'OKAREO_VERSION_INSTALLED<<EOF' >> $GITHUB_ENV
-        okareo-cli version >> $GITHUB_ENV
+        okareo-cli -v >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
 
     - name: Verify
