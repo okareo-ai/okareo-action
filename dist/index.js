@@ -21,15 +21,14 @@ async function setup() {
     // Extract the tarball/zipball onto host runner
     const extract = download.url.endsWith('.zip') ? tc.extractZip : tc.extractTar;
     const pathToCLI = await extract(pathToTarball);
-    core.debug(`Extracted to ${ pathToCLI }`);
-    core.debug(`Bin Path ${ download.binPath }`);
+    //core.debug(`Extracted to ${ pathToCLI }`);
+    //core.debug(`Bin Path ${ download.binPath }`);
     const binPath = path.join(pathToCLI, download.binPath, "bin");
-    core.debug(`Full Path ${ binPath }`);
+    //core.debug(`Full Path ${ binPath }`);
     // Expose the tool by adding it to the PATH
-    core.debug(`Adding ${ pathToCLI } to PATH`);
+    //core.debug(`Adding ${ pathToCLI } to PATH`);
     core.addPath(pathToCLI);
   } catch (e) {
-    core.debug(e);
     core.setFailed(e);
   }
 }
@@ -73,13 +72,15 @@ function mapOS(os) {
 
 function getDownloadObject(version) {
   const platform = os.platform();
-  core.debug(`platform: ${ platform }`);
-  core.debug(`os.arch(): ${ os.arch() }`);
-  const filename = `okareo_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
+  //core.debug(`platform: ${ platform }`);
+  //core.debug(`os.arch(): ${ os.arch() }`);
+  const filename = 'okareo_0.0.8_linux_386';
+  //const filename = `okareo_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
   const extension = 'tar.gz'; //platform === 'win32' ? 'zip' : 'tar.gz';
   const binPath = filename;// = platform === 'win32' ? 'bin' : path.join(filename, 'bin');
-  core.debug(`binPath: ${ binPath }`);
-  const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v${ version }/${ filename }.${ extension }`
+  //core.debug(`binPath: ${ binPath }`);
+  //const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v${ version }/${ filename }.${ extension }`
+  const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v0.0.8/okareo_0.0.8_linux_386.tar.gz`
   return {
     url,
     binPath
