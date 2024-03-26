@@ -10,7 +10,7 @@ inputs:
 #  using: 'docker'
 #  image: 'Dockerfile'
 #  args:
-#    - ${{ inputs.who-to-greet }}
+#    - ${{ inputs.version }}
 runs:
-  using: node12
+  using: node20
   main: dist/index.js
