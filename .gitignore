@@ -1,4 +1,7 @@
 # gitignore file
 
+node_modules
+
 temp
 
+.env
