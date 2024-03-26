@@ -23,7 +23,7 @@ async function setup() {
     const pathToCLI = await extract(pathToTarball);
     //core.debug(`Extracted to ${ pathToCLI }`);
     //core.debug(`Bin Path ${ download.binPath }`);
-    const binPath = path.join(pathToCLI, download.binPath, "bin");
+    const binPath = path.join(pathToCLI, download.binPath);
     //core.debug(`Full Path ${ binPath }`);
     // Expose the tool by adding it to the PATH
     //core.debug(`Adding ${ pathToCLI } to PATH`);
@@ -77,7 +77,8 @@ function getDownloadObject(version) {
   const filename = 'okareo_0.0.8_linux_386';
   //const filename = `okareo_${ version }_${ mapOS(platform) }_${ mapArch(os.arch()) }`;
   const extension = 'tar.gz'; //platform === 'win32' ? 'zip' : 'tar.gz';
-  const binPath = filename;// = platform === 'win32' ? 'bin' : path.join(filename, 'bin');
+  //const binPath = filename;
+  const binPath = 'bin';//(platform === 'win32') ? 'bin' : path.join(filename, 'bin');
   //core.debug(`binPath: ${ binPath }`);
   //const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v${ version }/${ filename }.${ extension }`
   const url = `https://github.com/okareo-ai/okareo-cli/releases/download/v0.0.8/okareo_0.0.8_linux_386.tar.gz`
