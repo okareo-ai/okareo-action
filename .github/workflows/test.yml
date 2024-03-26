@@ -13,11 +13,7 @@ defaults:
 jobs:
   test:
     name: Test
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [ubuntu-latest]
-        version: ['0.0.8']
+    runs-on: ubuntu-latest
     steps:
     - name: Checkout
       uses: actions/checkout@v2
@@ -25,7 +21,7 @@ jobs:
     - name: Okareo Action
       uses: ./
       with:
-        version: ${{ matrix.version }}
+        version: '0.0.8'
 
     - name: Validate that the Okareo CLI is available
       run: |
@@ -33,15 +29,15 @@ jobs:
 
     - name: Capture okareo version installed
       run: |
-        export OKAREO_VERSION=$( bin/okareo -v )
+        export OKAREO_VERSION=$( okareo -v )
         echo 'OKAREO_VERSION_INSTALLED<<EOF' >> $GITHUB_ENV
-        bin/okareo -v >> $GITHUB_ENV
+        okareo -v >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
 
     - name: Verify
       shell: python
       env:
-        OKAREO_VERSION_EXPECTED: ${{ matrix.version }}
+        OKAREO_VERSION_EXPECTED: '0.0.8'
       run: |
         import sys, os
         sys.exit(
