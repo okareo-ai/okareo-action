@@ -4,26 +4,26 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-      "lint": "eslint .",
-      "prepare": "ncc build index.js -o dist --source-map --license LICENSE",
-      "test": "jest",
-      "all": "npm run lint && npm run prepare && npm run test"
+        "lint": "eslint .",
+        "prepare": "ncc build index.js -o dist --source-map --license LICENSE",
+        "test": "jest",
+        "all": "npm run lint && npm run prepare && npm run test"
     },
     "keywords": [],
     "homepage": "https://github.com/okareo-ai/okareo",
     "license": "MIT",
     "repository": {
-      "type": "git",
-      "url": "git+https://github.com/okareo-ai/okareo.git"
+        "type": "git",
+        "url": "git+https://github.com/okareo-ai/okareo.git"
     },
     "dependencies": {
-      "@actions/core": "^1.2.6",
-      "@actions/tool-cache": "^1.6.0"
+        "@actions/core": "^1.2.6",
+        "@actions/github": "^6.0.0",
+        "@actions/tool-cache": "^1.6.0"
     },
     "devDependencies": {
-      "@vercel/ncc": "^0.24.0",
-      "eslint": "^7.4.0",
-      "jest": "^26.1.0"
+        "@vercel/ncc": "^0.24.0",
+        "eslint": "^7.4.0",
+        "jest": "^26.1.0"
     }
-  }
-  
+}
