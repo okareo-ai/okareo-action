@@ -21,7 +21,7 @@ steps:
   run: okareo run
   env:
     OKAREO_API_KEY: ${{ secrets.OKAREO_API_KEY }} # required
-    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} # optional keys for models you are building with
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} # optional for models you build with
 ```
 > [!NOTE]
 > This assumes that you obtained your Okareo API token from https://app.okareo.com/. More info in docs on how you can [get your API token](https://docs.okareo.com/docs/guides/environment#setting-up-your-okareo-environment). 
