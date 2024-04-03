@@ -1,5 +1,5 @@
 # action.yml
-name: 'Okareo'
+name: 'Okareo CI/CD'
 description: 'Setup the Okareo CLI to continuously evaluate your model integrations'
 branding:
   icon: 'check-circle'
