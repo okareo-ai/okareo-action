@@ -38,10 +38,6 @@ jobs:
         okareo -v >> $GITHUB_ENV
         echo 'EOF' >> $GITHUB_ENV
 
-    - name: Debug OKAREO_VERSION_INSTALLED
-      run: | 
-        echo "OKAREO_VERSION_INSTALLED=$OKAREO_VERSION_INSTALLED"
-        echo "OKAREO_VERSION_EXPECTED=$OKAREO_VERSION_EXPECTED"
 
     - name: Verify
       shell: python
@@ -52,3 +48,8 @@ jobs:
         sys.exit(
             int(not os.environ["OKAREO_VERSION_EXPECTED"] in os.environ["OKAREO_VERSION_INSTALLED"])
         )
+
+    - name: Debug OKAREO_VERSION_INSTALLED
+      run: | 
+        echo "OKAREO_VERSION_INSTALLED=$OKAREO_VERSION_INSTALLED"
+        echo "OKAREO_VERSION_EXPECTED=$OKAREO_VERSION_EXPECTED"
