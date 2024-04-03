@@ -26,6 +26,8 @@ jobs:
       uses: ./
       with:
         version: ${{ matrix.version }}
+      env:
+        OKAREO_VERSION_EXPECTED: ${{ matrix.version }}
 
     - name: Validate that the Okareo CLI is available
       run: |
@@ -41,13 +43,11 @@ jobs:
 
     - name: Verify
       shell: python
-      env:
-        OKAREO_VERSION_EXPECTED: ${{ matrix.version }}
       run: |
         import sys, os
-        sys.exit(
-            int(not os.environ["OKAREO_VERSION_EXPECTED"] in os.environ["OKAREO_VERSION_INSTALLED"])
-        )
+        expected_version = os.getenv("OKAREO_VERSION_EXPECTED")
+        installed_version = os.getenv("OKAREO_VERSION_INSTALLED")
+        sys.exit(int(expected_version != installed_version))
 
     - name: Debug OKAREO_VERSION_INSTALLED
       run: | 
