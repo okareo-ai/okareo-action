@@ -9,6 +9,7 @@ Inside your `.github/workflows/workflow.yml` file:
 steps:
 - uses: actions/checkout@v4
 - uses: okareo-ai/okareo-action@v2
+- name: Run Validation
   run: okareo run
   env:
     OKAREO_API_KEY: ${{ secrets.OKAREO_API_KEY }} # required
@@ -18,6 +19,7 @@ Other LLM API keys can also be passed in via environment variables:
 steps:
 - uses: actions/checkout@v4
 - uses: okareo-ai/okareo-action@v2
+- name: Run Validation
   run: okareo run
   env:
     OKAREO_API_KEY: ${{ secrets.OKAREO_API_KEY }} # required
@@ -51,7 +53,6 @@ You could run `okareo init` to initialize the above directory structure within y
 name: LLM App Development Workflow
 env:
   OKAREO_API_KEY: ${{ secrets.OKAREO_API_KEY }}
-  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 on:
   push:
@@ -76,7 +77,7 @@ jobs:
       - name: Run Validation
         run: |
           okareo -v
-          okareo run 
+          okareo run -d
 ```
 ## Viewing Results in Okareo
 
