@@ -1,6 +1,9 @@
 # action.yml
 name: 'Okareo Action'
 description: 'Setup the Okareo CLI to continuously evaluate your model integrations'
+branding:
+  icon: 'check-circle'
+  color: 'blue'
 inputs:
   version: 
     description: 'The version of the Okareo CLI to use'
