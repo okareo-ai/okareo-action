@@ -26,11 +26,11 @@ steps:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} # optional for models you build with
 ```
 > [!NOTE]
-> This assumes that you obtained your Okareo API token from https://app.okareo.com/. More info in docs on how you can [get your API token](https://docs.okareo.com/docs/guides/environment#setting-up-your-okareo-environment). 
+> This assumes that you obtained your Okareo API token from https://app.okareo.com/. More info in docs on how you can [get your API token](https://www.okareo.com/docs/getting-started/overview). 
 
 ## Workflow Options
 
-This GitHub action sets up the right environment and runs Okareo CLI. See `okareo run` in examples above. You can pass a variety of options to the `okareo` CLI command that are documented [here](https://docs.okareo.com/docs/sdk/cli).
+This GitHub action sets up the right environment and runs Okareo CLI. See `okareo run` in examples above. You can pass a variety of options to the `okareo` CLI command that are documented [here](https://www.okareo.com/docs/sdk/cli).
 
 
 In addition to your `.github/workflows/workflow.yml` file Okareo CLI expects the following directory structure to find flow scripts to execute. Under the `flows/` directory there could be Python (.py) or Typescript (.ts) scripts that Okareo CLI will execute. 
@@ -45,7 +45,7 @@ In addition to your `.github/workflows/workflow.yml` file Okareo CLI expects the
       │
       └─ [your_flow_script].[py|ts]
 ```
-You could run `okareo init` to initialize the above directory structure within your GitHub repo. See [CLI documentation](https://docs.okareo.com/docs/sdk/cli) on how to install the CLI and options it supports.
+You could run `okareo init` to initialize the above directory structure within your GitHub repo. See [CLI documentation](https://www.okareo.com/docs/sdk/cli) on how to install the CLI and options it supports.
 
 
 ### Example `workflow.yml` with Okareo Action for Python flows
